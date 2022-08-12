@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+
+        body{
+            color: #ffffff;
+            background: linear-gradient(to right, #6474e5, #9aa4ec);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .parent{
+            margin: 5em 15em;
+            border: 1px solid;
+            text-align: center;
+            border: none;
+            background-color: #4ea1d3;
+        }
+        h1{
+            font-size: 2.5em;
+            padding-top: 0.8em;
+        }
+        h4{
+            font-size: 15px;
+        }
+        input{
+            padding: 1em;
+            background-color: #f4a4a4;
+            border: 2px solid black;
+            outline: none;
+        }
+        button{
+            padding: 0.3em;
+            margin-top: 1em;
+            font-size: 1em;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+        h3{
+            padding-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <h1>Simple Calculator</h1>
+        <h4>(Type either "add" or "subtract" or "multiply" or "divide" in the middle section)</h4>
+        <input type="text" id="num_1">
+        <input type="text" id="op">
+        <input type="text" id="num_2"><br>
+        <button onclick="calc()">Calculate</button>
+        <button id="reset" onclick="calc()">Clear</button>
+        <h3>Result: <span id="rslt"></span></h3>
+    </div>
+    
+
+    <script>
+        let first_num = document.getElementById("num_1");
+        let operation = document.getElementById("op");
+        let second_num = document.getElementById("num_2");
+
+        function calc(){
+            let num_1 = first_num.value;
+                num_1 = parseInt(num_1);
+            let ops = operation.value;
+            let num_2 = second_num.value;
+                num_2 = parseInt(num_2);
+
+            if(ops === "add"){
+                document.getElementById('rslt').innerHTML = num_1 + num_2;
+            }else if(ops === "subtract"){
+                document.getElementById('rslt').innerHTML = num_1 - num_2;
+            }else if(ops === "multiply"){
+                document.getElementById('rslt').innerHTML = num_1 * num_2;
+            }else if(ops === "divide"){
+                document.getElementById('rslt').innerHTML = num_1 / num_2;
+            }else{
+                document.getElementById("rslt").innerHTML = "Invalid Operation";
+            }
+
+            reset.addEventListener('click', () => {
+                first_num.value = "";
+                operation.value = "";
+                second_num.value = "";
+                document.getElementById("rslt").innerHTML = "";
+            })
+        }
+
+
+
+    </script>
+</body>
+</html>
